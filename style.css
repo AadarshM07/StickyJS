@@ -1,0 +1,93 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+}
+
+#app-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+/* Header and Input Area */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-family: 'Kalam', cursive;
+    font-size: 3rem;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#note-input {
+    width: 400px;
+    height: 60px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: none;
+}
+
+#note-input:focus {
+    outline: none;
+    border-color: #f7d794;
+}
+
+#add-note-btn {
+    padding: 0 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2c3e50;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Notes Container */
+#notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Individual Sticky Note */
+.note {
+    width: 250px;
+    height: 250px;
+    padding: 20px;
+    font-family: 'Kalam', cursive;
+    font-size: 1.2rem;
+    background-color: #f7e794;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    /* This makes sure long text wraps */
+    word-wrap: break-word; 
+}
+
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
