@@ -2,7 +2,6 @@
 const notesContainer = document.getElementById("notes-container");
 const addNoteBtn = document.getElementById("add-note-btn");
 const noteInput = document.getElementById("note-input");
-const jokeBtn = document.getElementById("joke-btn");
 
 // --- Functions ---
 
@@ -14,16 +13,6 @@ function getNotes() {
 // Saves an array of notes to local storage.
 function saveNotes(notes) {
     localStorage.setItem("stickynotes-notes", JSON.stringify(notes));
-}
-
-async function getJoke() {
-    let url = "https://v2.jokeapi.dev/joke/Any?type=single"
-    let response = await fetch(url);
-
-    let data = await response.json();
-    joke = data['joke']
-
-    return joke;
 }
 
 // Renders all notes to the page.
@@ -91,20 +80,6 @@ addNoteBtn.addEventListener("click", () => {
     saveNotes(notes);
     displayNotes(); // Update the display
     noteInput.value = ""; // Clear the input box
-});
-
-jokeBtn.addEventListener("click", async () => {
-    let joke = await getJoke();
-
-    const notes = getNotes();
-    const newNote = {
-        id: new Date().getTime(),
-        content: joke
-    };
-    notes.push(newNote);
-
-    saveNotes(notes);
-    displayNotes();
 });
 
 // --- Initial Load ---
