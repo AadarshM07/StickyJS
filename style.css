@@ -48,7 +48,7 @@ header h1 {
     border-color: #f7d794;
 }
 
-#add-note-btn {
+#add-note-btn,#get-joke {
     padding: 0 20px;
     font-size: 1rem;
     font-weight: bold;
