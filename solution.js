@@ -2,7 +2,7 @@
 const notesContainer = document.getElementById("notes-container");
 const addNoteBtn = document.getElementById("add-note-btn");
 const noteInput = document.getElementById("note-input");
-const genJoke = document.getElementById("get-joke");
+const jokeBtn = document.getElementById("joke-btn");
 
 // --- Functions ---
 
@@ -17,17 +17,14 @@ function saveNotes(notes) {
 }
 
 async function getJoke() {
-    let url = "https://v2.jokeapi.dev/joke/Misc"
-    let joke;
+    let url = "https://v2.jokeapi.dev/joke/Any?type=single"
     let response = await fetch(url);
+
     let data = await response.json();
-    if (data['type']=="single") {
-        joke = data['joke']
-    } else if (data['type']=='twopart') {
-        joke = `${data['setup']}\n${data['delivery']}`
-    }
+    joke = data['joke']
+
     return joke;
-    }
+}
 
 // Renders all notes to the page.
 function displayNotes() {
@@ -96,18 +93,16 @@ addNoteBtn.addEventListener("click", () => {
     noteInput.value = ""; // Clear the input box
 });
 
-genJoke.addEventListener("click", async () => {
+jokeBtn.addEventListener("click", async () => {
     let joke = await getJoke();
-    console.log(`${joke}`)
-    if (!joke) {
-        return;
-    }
+
     const notes = getNotes();
     const newNote = {
         id: new Date().getTime(),
         content: joke
     };
     notes.push(newNote);
+
     saveNotes(notes);
     displayNotes();
 });
